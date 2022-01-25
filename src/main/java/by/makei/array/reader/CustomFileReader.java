@@ -1,54 +1,46 @@
 package by.makei.array.reader;
 
 import by.makei.array.exception.CustomException;
+import by.makei.array.validator.NumberValidator;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
-import static by.makei.array.validator.NumberValidator.fileValidator;
 
 public class CustomFileReader {
+    private static final CustomFileReader instance = new CustomFileReader();
+    public static final Logger logger = LogManager.getLogger(CustomFileReader.class);
+    private final NumberValidator numberValidator = NumberValidator.getInstance();
 
-    public static Logger logger = LogManager.getLogger(CustomFileReader.class);
+    private CustomFileReader() {
+    }
 
+    public static CustomFileReader getInstance() {
+        return instance;
+    }
 
-    public static String readWholeFile(String fileName) throws CustomException {
+    public List<String> readLinesFromFile(String fileName) throws CustomException {
         String line;
         List<String> list = new ArrayList<>();
-        StringBuilder finalStr = new StringBuilder();
-        BufferedReader bf = null;
         File file = new File(fileName);
 
-        try {
-            bf = new BufferedReader(new FileReader(fileName));
-            while ((line = bf.readLine()) != null) {
-                if (fileValidator(line)) {
+        try (BufferedReader bufferedReader = new BufferedReader(new FileReader(fileName))) {
+            while ((line = bufferedReader.readLine()) != null) {
+                if (numberValidator.validateStringWithIntegers(line)) {
                     list.add(line);
                 }
             }
         } catch (FileNotFoundException e) {
-            logger.error(e.getMessage());
-            throw new CustomException("File \""+ file.getAbsolutePath() + "\" hasn't been found",e);
+            logger.error(e.getMessage(), "File \"" + file.getAbsolutePath() + "\" hasn't been found");
+            throw new CustomException("File \"" + file.getAbsolutePath() + "\" hasn't been found", e);
         } catch (IOException e) {
-            logger.error(e.getMessage());
-            throw new CustomException(e.getMessage());
-        }finally {
-            if(bf != null){
-                try {
-                    bf.close();
-                } catch (IOException e) {
-                    logger.error("File \""+ file.getAbsolutePath() + "\" hasn't been found",e.getMessage());
-                    throw new CustomException(e.getMessage());
-                }
-            }
+            logger.error(e.getMessage(), "File \"" + file.getAbsolutePath() + "\" hasn't been found");
+            throw new CustomException("File \"" + file.getAbsolutePath() + "\" hasn't been read", e);
         }
 
-        for (String str : list) {
-            finalStr.append(str);
-        }
-
-        return finalStr.toString();
+        return list;
     }
 }
