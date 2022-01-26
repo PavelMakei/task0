@@ -9,7 +9,7 @@ import org.apache.logging.log4j.Logger;
 import java.util.stream.IntStream;
 
 public class CustomSortImpl implements CustomSort {
-    private static Logger logger = LogManager.getLogger(CustomSortImpl.class);
+    private static final Logger logger = LogManager.getLogger();
     private static final CustomSortImpl instance = new CustomSortImpl();
 
     private CustomSortImpl() {
@@ -73,7 +73,7 @@ public class CustomSortImpl implements CustomSort {
             customArray.setIntArray(array);
             logger.log(Level.INFO, "insertSort finished");
         } else {
-            logger.error("Array is null or length less then 1");
+            logger.log(Level.ERROR,"Array is null or length less then 1");
             throw new CustomException("Array is null or length less then 1");
         }
     }
@@ -90,7 +90,7 @@ public class CustomSortImpl implements CustomSort {
             customArray.setIntArray(sortedArray);
             logger.log(Level.INFO, "streamSort finished");
         } else {
-            logger.error("Array is null or length less then 1");
+            logger.log(Level.ERROR,"Array is null or length less then 1");
             throw new CustomException("Array is null or length less then 1");
         }
     }

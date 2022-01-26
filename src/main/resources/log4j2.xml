@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Configuration status = "info">
+<Configuration status="info">
     <Properties>
         <property name="LOG_DIR">logs</property>
         <property name="pattern_file">%d{yyyy-MM-dd HH:mm:ss} [%t] %-5level %logger{5} - %msg%n</property>
@@ -12,18 +12,18 @@
             <PatternLayout pattern="${pattern_console}"/>
         </Console>
         <RollingFile name="FileRolling" fileName="logs/log_roll.txt" append="true"
-                     filePattern = "logs/${date:yyyy-MM-dd}/%d{yyyy-MM-dd_HH-mm}_%i.txt">
+                      filePattern="logs/${date:yyyy-MM-dd}/%d{yyyy-MM-dd_HH-mm}_%i.txt">
             <PatternLayout pattern="${pattern_file}"/>
             <Policies>
                 <SizeBasedTriggeringPolicy size="15 KB"/>
             </Policies>
-            <DefaultRolloverStrategy max="10"/>
+            <DefaultRolloverStrategy max="3"/>
         </RollingFile>
     </Appenders>
     <Loggers>
-        <Root level = "INFO" >
-            <AppenderRef ref="FileRolling" />
-            <AppenderRef ref="Console" />
+        <Root level="INFO">
+            <AppenderRef ref="FileRolling"/>
+            <AppenderRef ref="Console"/>
         </Root>
     </Loggers>
 </Configuration>

@@ -2,24 +2,18 @@ package by.makei.array.service.impl;
 
 import by.makei.array.entity.CustomArray;
 import by.makei.array.exception.CustomException;
-import by.makei.array.reader.CustomFileReader;
 import by.makei.array.service.CustomMath;
-import by.makei.array.validator.NumberValidator;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.math.BigInteger;
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
-import java.util.stream.Collectors;
 import java.util.stream.IntStream;
-import java.util.stream.Stream;
 
 public class CustomMathImpl implements CustomMath {
 
-    private static Logger logger = LogManager.getLogger(CustomMathImpl.class);
+    private static final Logger logger = LogManager.getLogger();
     private static final CustomMathImpl instance = new CustomMathImpl();
 
     private CustomMathImpl() {
@@ -39,7 +33,7 @@ public class CustomMathImpl implements CustomMath {
                 result = array[i];
             }
         }
-        logger.log(Level.INFO, "find max = " + result);
+        logger.log(Level.INFO, "find max = %f" + result);
         return result;
     }
 
@@ -103,7 +97,7 @@ public class CustomMathImpl implements CustomMath {
             logger.log(Level.INFO, "sum stream = " + result);
             return result;
         } catch (ArithmeticException e) {
-            logger.error("The sum of array is too big or too low");
+            logger.log(Level.ERROR,"The sum of array is too big or too low", e);
             throw new CustomException("The sum of array is too big or too low", e);
         }
     }

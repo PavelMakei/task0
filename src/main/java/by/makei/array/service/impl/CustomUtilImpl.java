@@ -14,7 +14,7 @@ import java.util.stream.Stream;
 
 public class CustomUtilImpl implements CustomUtil {
 
-    private static Logger logger = LogManager.getLogger(CustomUtilImpl.class);
+    private static final Logger logger = LogManager.getLogger();
     private static final CustomUtilImpl instance = new CustomUtilImpl();
 
     private CustomUtilImpl() {
@@ -32,7 +32,7 @@ public class CustomUtilImpl implements CustomUtil {
             customArray.setIntArray(array);
             logger.log(Level.INFO, "Value on index " + index + "was replaced with " + value);
         } catch (CustomException e) {
-            logger.error("Method wasn't implemented", e);
+            logger.log(Level.ERROR,"Method wasn't implemented");
             throw new CustomException("Method wasn't implemented", e);
         }
     }
@@ -57,7 +57,7 @@ public class CustomUtilImpl implements CustomUtil {
             customArray.setIntArray(resultArray);
             logger.log(Level.INFO, "Value on index " + index + "was replaced with " + value);
         } catch (CustomException e) {
-            logger.error("Method wasn't implemented", e);
+            logger.log(Level.ERROR, "Method wasn't implemented", e);
             throw new CustomException("Method wasn't implemented", e);
         }
     }

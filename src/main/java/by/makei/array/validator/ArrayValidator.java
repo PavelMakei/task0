@@ -5,7 +5,7 @@ import org.apache.logging.log4j.Logger;
 
 public class ArrayValidator {
     private static final ArrayValidator instance = new ArrayValidator();
-    public static final Logger logger = LogManager.getLogger(ArrayValidator.class);
+    private static final Logger logger = LogManager.getLogger(ArrayValidator.class);
 
     private ArrayValidator() {
     }

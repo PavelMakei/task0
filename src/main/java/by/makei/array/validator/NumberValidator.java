@@ -1,18 +1,19 @@
 package by.makei.array.validator;
 
+import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 public class NumberValidator {
     private static final NumberValidator instance = new NumberValidator();
-    public static final Logger logger = LogManager.getLogger(NumberValidator.class);
-    private final String splitByTabSpase = "\\s+";
+    private static final Logger LOGGER = LogManager.getLogger();
 
     public static NumberValidator getInstance() {
         return instance;
     }
 
     public boolean validateStringWithIntegers(String str) {
+        String splitByTabSpase = "\\s+";
         String[] literals = str.strip().split(splitByTabSpase);
         return checkIfAllLiteralsInt(literals);
     }
@@ -23,7 +24,7 @@ public class NumberValidator {
                 Integer.parseInt(literal.strip());
 
             } catch (NumberFormatException e) {
-                logger.error("literal " + literal + " can't be parsed to int",e);
+                LOGGER.log(Level.INFO, "literal {} can not be parsed to int", literal);
                 return false;
             }
         }

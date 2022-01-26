@@ -2,6 +2,7 @@ package by.makei.array.reader;
 
 import by.makei.array.exception.CustomException;
 import by.makei.array.validator.NumberValidator;
+import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -12,7 +13,7 @@ import java.util.List;
 
 public class CustomFileReader {
     private static final CustomFileReader instance = new CustomFileReader();
-    public static final Logger logger = LogManager.getLogger(CustomFileReader.class);
+    private static final Logger logger = LogManager.getLogger();
     private final NumberValidator numberValidator = NumberValidator.getInstance();
 
     private CustomFileReader() {
@@ -34,10 +35,10 @@ public class CustomFileReader {
                 }
             }
         } catch (FileNotFoundException e) {
-            logger.error(e.getMessage(), "File \"" + file.getAbsolutePath() + "\" hasn't been found");
+            logger.log(Level.ERROR, "File \"{}\" has not been found", file.getAbsolutePath());
             throw new CustomException("File \"" + file.getAbsolutePath() + "\" hasn't been found", e);
         } catch (IOException e) {
-            logger.error(e.getMessage(), "File \"" + file.getAbsolutePath() + "\" hasn't been found");
+            logger.log(Level.ERROR, "File \"" + file.getAbsolutePath() + "\" hasn't been read", e);
             throw new CustomException("File \"" + file.getAbsolutePath() + "\" hasn't been read", e);
         }
 
