@@ -1,7 +1,9 @@
 package by.makei.array.service;
 
 import by.makei.array.entity.CustomArray;
-import by.makei.array.exception.CustomException;
+import by.makei.array.exception.IncorrectCustomArrayArithmeticException;
+import by.makei.array.exception.IncorrectCustomArrayInsertException;
+import by.makei.array.exception.IncorrectCustomArrayException;
 
 public interface CustomMath {
 
@@ -9,14 +11,14 @@ public interface CustomMath {
         int findMaxStream(CustomArray customArray);
         int findMin(CustomArray customArray);
         int findMinStream(CustomArray customArray);
-        double findAverage(CustomArray customArray) throws CustomException;
+        double findAverage(CustomArray customArray) throws IncorrectCustomArrayInsertException;
         double findAverageStream(CustomArray customArray);
-        int sumArray(CustomArray customArray) throws CustomException;
-        int sumArrayStream(CustomArray customArray) throws CustomException;
-        int countPositive(CustomArray customArray) throws CustomException;
-        int countPositiveStream(CustomArray customArray);
-        int countNegative(CustomArray customArray);
-        int countNegativeStream(CustomArray customArray);
+        int sumArray(CustomArray customArray) throws IncorrectCustomArrayInsertException, IncorrectCustomArrayArithmeticException, IncorrectCustomArrayException;
+        int sumArrayStream(CustomArray customArray) throws IncorrectCustomArrayInsertException, IncorrectCustomArrayException, IncorrectCustomArrayArithmeticException;
+        int countPositive(CustomArray customArray) throws IncorrectCustomArrayInsertException, IncorrectCustomArrayException;
+        int countPositiveStream(CustomArray customArray) throws IncorrectCustomArrayException;
+        int countNegative(CustomArray customArray) throws IncorrectCustomArrayException;
+        int countNegativeStream(CustomArray customArray) throws IncorrectCustomArrayException;
 
 
 }

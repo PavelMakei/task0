@@ -13,6 +13,9 @@ public class NumberValidator {
     }
 
     public boolean validateStringWithIntegers(String str) {
+        if(str == null){
+            return false;
+        }
         String splitByTabSpase = "\\s+";
         String[] literals = str.strip().split(splitByTabSpase);
         return checkIfAllLiteralsInt(literals);

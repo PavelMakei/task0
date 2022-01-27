@@ -1,10 +1,9 @@
 package by.makei.array.entity;
 
-import by.makei.array.exception.CustomException;
+import by.makei.array.exception.IncorrectCustomArrayInsertException;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-
 import java.util.Arrays;
 
 
@@ -13,15 +12,15 @@ public class CustomArray {
     public static final Logger logger = LogManager.getLogger();
 
     public CustomArray(int[] array) {
-        this.intArray = Arrays.copyOf(array, array.length);
+        this.intArray = cloneArray(array);
     }
 
-    public void setIntArray(int[] intArray) throws CustomException {
+    public void setIntArray(int[] intArray) throws IncorrectCustomArrayInsertException {
         if (this.intArray.length == intArray.length) {
-            this.intArray = intArray;
+            this.intArray = cloneArray(intArray);
         } else {
             logger.log(Level.ERROR,"Array has invalid length!");
-            throw new CustomException("Invalid array! Can't be implemented.");
+            throw new IncorrectCustomArrayInsertException("Invalid array! Can't be implemented.");
         }
     }
 
@@ -55,7 +54,12 @@ public class CustomArray {
         return Arrays.toString(intArray);
     }
 
+    private int[] cloneArray(int[] intArray) {
+        return Arrays.copyOf(intArray, intArray.length);
+    }
+
     private int[] cloneArray() {
         return Arrays.copyOf(intArray, intArray.length);
     }
+
 }

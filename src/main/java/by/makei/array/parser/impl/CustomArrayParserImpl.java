@@ -1,15 +1,15 @@
 package by.makei.array.parser.impl;
 
-public class CustomArrayParser {
-    private static final CustomArrayParser INSTANCE = new CustomArrayParser();
+public class CustomArrayParserImpl {
+    private static final CustomArrayParserImpl instance = new CustomArrayParserImpl();
     private final String REGEX_DELIMITER = "\\s+";
 //TODO if it need logger?
 
-    private CustomArrayParser() {
+    private CustomArrayParserImpl() {
     }
 
-    public static CustomArrayParser getInstance() {
-        return INSTANCE;
+    public static CustomArrayParserImpl getInstance() {
+        return instance;
     }
 
     public int[] convert(String line) {

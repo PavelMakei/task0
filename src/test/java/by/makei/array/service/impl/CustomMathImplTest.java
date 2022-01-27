@@ -1,7 +1,7 @@
 package by.makei.array.service.impl;
 
 import by.makei.array.entity.CustomArray;
-import by.makei.array.exception.CustomException;
+import by.makei.array.exception.IncorrectCustomArrayInsertException;
 import by.makei.array.service.CustomMath;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Timeout;
@@ -32,7 +32,7 @@ class CustomMathImplTest {
     }
 
     @Test
-    void findAverage() throws CustomException {
+    void findAverage() throws IncorrectCustomArrayInsertException {
         int[] array = {Integer.MAX_VALUE, 234,432};
         CustomArray customArray = new CustomArray(array);
         double expected = 234;

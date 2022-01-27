@@ -1,7 +1,9 @@
 package by.makei.array.service.impl;
 
 import by.makei.array.entity.CustomArray;
-import by.makei.array.exception.CustomException;
+import by.makei.array.exception.IncorrectCustomArrayArithmeticException;
+import by.makei.array.exception.IncorrectCustomArrayInsertException;
+import by.makei.array.exception.IncorrectCustomArrayException;
 import by.makei.array.service.CustomMath;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
@@ -12,7 +14,6 @@ import java.util.Arrays;
 import java.util.stream.IntStream;
 
 public class CustomMathImpl implements CustomMath {
-
     private static final Logger logger = LogManager.getLogger();
     private static final CustomMathImpl instance = new CustomMathImpl();
 
@@ -87,76 +88,103 @@ public class CustomMathImpl implements CustomMath {
     }
 
     @Override
-    public int sumArray(CustomArray customArray) throws CustomException {
-        int[] array = customArray.getIntArray();
-        int result = 0;
-        try {
+    public int sumArray(CustomArray customArray) throws IncorrectCustomArrayArithmeticException, IncorrectCustomArrayException {
+        if (validate(customArray)) {
+            int[] array = customArray.getIntArray();
+            int result = 0;
+            try {
+                for (int i = 0; i < array.length; i++) {
+                    result = Math.addExact(result, array[i]);
+                }
+                logger.log(Level.INFO, "sum stream = " + result);
+                return result;
+            } catch (ArithmeticException e) {
+                logger.log(Level.ERROR, "The sum of array is too big or too low", e);
+                throw new IncorrectCustomArrayArithmeticException("The sum of array is too big or too low", e);
+            }
+        }
+        return 0;
+    }
+
+    @Override
+    public int sumArrayStream(CustomArray customArray) throws IncorrectCustomArrayException, IncorrectCustomArrayArithmeticException {
+        if (validate(customArray)) {
+            int[] array = customArray.getIntArray();
+            BigInteger sum = Arrays.stream(array).mapToObj(BigInteger::valueOf)
+                    .reduce(BigInteger.ZERO, (a, b) -> a.add(b));
+            try {
+                int result = sum.intValueExact();
+                logger.log(Level.INFO, "find average stream = {}", result);
+                return result;
+            } catch (ArithmeticException e) {
+               // logger.error("The sum of array is too big or too low");
+                throw new IncorrectCustomArrayArithmeticException("The sum of array is too big or too low", e);
+            }
+        }
+        return 0;
+    }
+
+    @Override
+    public int countPositive(CustomArray customArray) throws IncorrectCustomArrayException {
+        if (validate(customArray)) {
+            int[] array = customArray.getIntArray();
+            long result = 0;
             for (int i = 0; i < array.length; i++) {
-                result = Math.addExact(result, array[i]);
+                if (array[i] > 0) {
+                    result++;
+                }
             }
-            logger.log(Level.INFO, "sum stream = " + result);
-            return result;
-        } catch (ArithmeticException e) {
-            logger.log(Level.ERROR,"The sum of array is too big or too low", e);
-            throw new CustomException("The sum of array is too big or too low", e);
+            logger.log(Level.INFO, "count positive = {}", result);
+            return (int) result;
         }
+        return 0;
     }
 
     @Override
-    public int sumArrayStream(CustomArray customArray) throws CustomException {
-        int[] array = customArray.getIntArray();
-        BigInteger sum = Arrays.stream(array).mapToObj(BigInteger::valueOf)
-                .reduce(BigInteger.ZERO, (a, b) -> a.add(b));
-        try {
-            int result = sum.intValueExact();
-            logger.log(Level.INFO, "find average stream = " + result);
-            return result;
-        } catch (ArithmeticException e) {
-            logger.error("The sum of array is too big or too low");
-            throw new CustomException("The sum of array is too big or too low", e);
+    public int countPositiveStream(CustomArray customArray) throws IncorrectCustomArrayException {
+        if (validate(customArray)) {
+            int[] array = customArray.getIntArray();
+            long result = Arrays.stream(array).filter(a -> a > 0).count();
+            logger.log(Level.INFO, "count positive stream = {}", result);
+            return (int) result;
         }
+        return 0;
     }
 
     @Override
-    public int countPositive(CustomArray customArray) {
-        int[] array = customArray.getIntArray();
-        long result = 0;
-        for (int i = 0; i < array.length; i++) {
-            if (array[i] > 0) {
-                result++;
+    public int countNegative(CustomArray customArray) throws IncorrectCustomArrayException {
+        if (validate(customArray)) {
+            int[] array = customArray.getIntArray();
+            long result = 0;
+            for (int i = 0; i < array.length; i++) {
+                if (array[i] < 0) {
+                    result++;
+                }
+            }
+            logger.log(Level.INFO, "count negative = {}", result);
+            return (int) result;
+        }
+        return 0;
+    }
+
+    @Override
+    public int countNegativeStream(CustomArray customArray) throws IncorrectCustomArrayException {
+        if (validate(customArray)) {
+            int[] array = customArray.getIntArray();
+            long result = Arrays.stream(array).filter(a -> a < 0).count();
+            logger.log(Level.INFO, "count negative stream = {}", result);
+            return (int) result;
+        }
+        return 0;
+    }
+
+    private boolean validate(CustomArray customArray) throws IncorrectCustomArrayException {
+        if (customArray != null) {
+            if (customArray.getIntArray() != null && customArray.getIntArray().length > 0) {
+                return true;
             }
         }
-        logger.log(Level.INFO, "count positive = " + result);
-        return (int) result;
+        //logger.log(Level.ERROR, "Incorrect CustomArray (is null or array is null or length <1");
+        throw new IncorrectCustomArrayException("Incorrect CustomArray (is null or array is null or length <1");
     }
-
-    @Override
-    public int countPositiveStream(CustomArray customArray) {
-        int[] array = customArray.getIntArray();
-        long result = Arrays.stream(array).filter(a -> a > 0).count();
-        logger.log(Level.INFO, "count positive stream = " + result);
-        return (int) result;
-    }
-
-    @Override
-    public int countNegative(CustomArray customArray) {
-        int[] array = customArray.getIntArray();
-        long result = 0;
-        for (int i = 0; i < array.length; i++) {
-            if (array[i] < 0) {
-                result++;
-            }
-        }
-        logger.log(Level.INFO, "count negative = " + result);
-        return (int) result;
-    }
-
-    @Override
-    public int countNegativeStream(CustomArray customArray) {
-        int[] array = customArray.getIntArray();
-        long result = Arrays.stream(array).filter(a -> a < 0).count();
-        logger.log(Level.INFO, "count negative stream = " + result);
-        return (int) result;
-    }
-
 }
