@@ -24,7 +24,7 @@ public class CustomSortImpl implements CustomSort {
     @Override
     public void bubbleSort(CustomArray customArray) throws IncorrectCustomArrayException {
         if (validate(customArray)) {
-            int[] array = customArray.getCustomIntArray();
+            int[] array = customArray.getIntArray();
             logger.log(Level.INFO, "bubbleSort started");
             int buffer = 0;
             for (var i = 1; i < array.length; i++) {
@@ -47,7 +47,7 @@ public class CustomSortImpl implements CustomSort {
     @Override
     public void selectionSort(CustomArray customArray) throws IncorrectCustomArrayException {
         if (validate(customArray)) {
-            int[] array = customArray.getCustomIntArray();
+            int[] array = customArray.getIntArray();
             int buffer = 0, imin = 0;
             for (var i = 0; i < array.length - 1; i++) {
                 imin = i;
@@ -71,7 +71,7 @@ public class CustomSortImpl implements CustomSort {
     @Override
     public void insertSort(CustomArray customArray) throws IncorrectCustomArrayException {
         if (validate(customArray)) {
-            int[] array = customArray.getCustomIntArray();
+            int[] array = customArray.getIntArray();
             int buffer = 0, j = 0;
             for (var i = 1; i < array.length; i++) {
                 buffer = array[i];
@@ -92,7 +92,7 @@ public class CustomSortImpl implements CustomSort {
     public void streamSort(CustomArray customArray) throws IncorrectCustomArrayException {
         if (validate(customArray)) {
 
-            int[] array = customArray.getCustomIntArray();
+            int[] array = customArray.getIntArray();
             int[] sortedArray;
             sortedArray = IntStream.of(array)
                     .sorted()
@@ -107,7 +107,7 @@ public class CustomSortImpl implements CustomSort {
 
     private boolean validate(CustomArray customArray) throws IncorrectCustomArrayException {
         if (customArray != null) {
-            if (customArray.getCustomIntArray() != null && customArray.getCustomIntArray().length > 0) {
+            if (customArray.getIntArray() != null && customArray.getIntArray().length > 0) {
                 return true;
             }
         }

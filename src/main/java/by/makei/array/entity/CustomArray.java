@@ -24,7 +24,7 @@ public class CustomArray {
         }
     }
 
-    public int[] getCustomIntArray() {
+    public int[] getIntArray() {
         return cloneArray();
     }
 

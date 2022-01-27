@@ -6,7 +6,7 @@ import org.apache.logging.log4j.Logger;
 
 public class NumberValidator {
     private static final NumberValidator instance = new NumberValidator();
-    private static final Logger LOGGER = LogManager.getLogger();
+    private static final Logger logger = LogManager.getLogger();
 
     public static NumberValidator getInstance() {
         return instance;
@@ -27,7 +27,7 @@ public class NumberValidator {
                 Integer.parseInt(literal.strip());
 
             } catch (NumberFormatException e) {
-                LOGGER.log(Level.INFO, "literal {} can not be parsed to int", literal);
+                logger.log(Level.INFO, "literal {} can not be parsed to int", literal);
                 return false;
             }
         }
