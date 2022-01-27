@@ -12,17 +12,14 @@ import by.makei.array.service.impl.CustomMathImpl;
 import by.makei.array.service.impl.CustomSortImpl;
 import by.makei.array.service.impl.CustomUtilImpl;
 import by.makei.array.validator.FileValidator;
-import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-
-import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.List;
 
 
 public class UserMain {
-    public static final Logger logger = LogManager.getLogger(UserMain.class);
+    private static final Logger logger = LogManager.getLogger(UserMain.class);
     private static final CustomMath customMath = CustomMathImpl.getInstance();
     CustomFileReaderImpl customFileReaderImpl = new CustomFileReaderImpl();
     CustomArrayParserImpl customArrayParserImpl = CustomArrayParserImpl.getInstance();

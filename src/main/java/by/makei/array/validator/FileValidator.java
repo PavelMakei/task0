@@ -18,6 +18,7 @@ public class FileValidator {
             logger.log(Level.ERROR,"FileName is null");
             isValid = false;
         } else {
+            fileName = fileName.replace("\\", "/");
             File file = null;
             URL url = getClass().getClassLoader().getResource(fileName);
             if(url == null){

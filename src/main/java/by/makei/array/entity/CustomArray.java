@@ -8,8 +8,8 @@ import java.util.Arrays;
 
 
 public class CustomArray {
-    private int[] intArray;
     public static final Logger logger = LogManager.getLogger();
+    private int[] intArray;
 
     public CustomArray(int[] array) {
         this.intArray = cloneArray(array);
@@ -24,7 +24,7 @@ public class CustomArray {
         }
     }
 
-    public int[] getIntArray() {
+    public int[] getCustomIntArray() {
         return cloneArray();
     }
 

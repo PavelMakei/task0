@@ -28,7 +28,7 @@ public class CustomUtilImpl implements CustomUtil {
     @Override
     public void replace(CustomArray customArray, int index, int value) throws IncorrectCustomArrayException {
         if (validate(customArray)) {
-            int[] array = customArray.getIntArray();
+            int[] array = customArray.getCustomIntArray();
             array[index] = value;
             try {
                 customArray.setIntArray(array);
@@ -42,7 +42,7 @@ public class CustomUtilImpl implements CustomUtil {
     @Override
     public void replaceStream(CustomArray customArray, int index, int value) throws IncorrectCustomArrayException {
         if (validate(customArray)) {
-            int[] array = customArray.getIntArray();
+            int[] array = customArray.getCustomIntArray();
             List<Integer> listFromArray = new ArrayList<>();
             for (int i = 0; i < array.length; i++) {
                 listFromArray.add(array[i]);
@@ -69,7 +69,7 @@ public class CustomUtilImpl implements CustomUtil {
     @Override
     public void replaceAll(CustomArray customArray, int find, int valueToReplace) throws IncorrectCustomArrayException {
         if (validate(customArray)) {
-            int[] array = customArray.getIntArray();
+            int[] array = customArray.getCustomIntArray();
             int count = 0;
             for (int i = 0; i < array.length; i++) {
                 if (array[i] == find) {
@@ -89,7 +89,7 @@ public class CustomUtilImpl implements CustomUtil {
     @Override
     public void replaceAllStream(CustomArray customArray, int find, int valueToReplace) throws IncorrectCustomArrayException {
         if (validate(customArray)) {
-            int[] array = customArray.getIntArray();
+            int[] array = customArray.getCustomIntArray();
             int[] resultArray = Arrays.stream(array).map(val -> val == find ? valueToReplace : val).toArray();
             try {
                 customArray.setIntArray(resultArray);
@@ -102,7 +102,7 @@ public class CustomUtilImpl implements CustomUtil {
 
     private boolean validate(CustomArray customArray) throws IncorrectCustomArrayException {
         if (customArray != null) {
-            if (customArray.getIntArray() != null && customArray.getIntArray().length > 0) {
+            if (customArray.getCustomIntArray() != null && customArray.getCustomIntArray().length > 0) {
                 return true;
             }
         }
