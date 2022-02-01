@@ -1,15 +1,14 @@
 package by.makei.array.service;
 
 import by.makei.array.entity.CustomArray;
-import by.makei.array.exception.IncorrectCustomArrayInsertException;
-import by.makei.array.exception.IncorrectCustomArrayException;
+import by.makei.array.exception.CustomArrayException;
 
 public interface CustomUtil {
-    void replace(CustomArray customArray, int index, int value) throws IncorrectCustomArrayInsertException, IncorrectCustomArrayException;
+    boolean replace(CustomArray customArray, int index, int value) throws  CustomArrayException;
 
-    void replaceStream(CustomArray customArray, int index, int value) throws IncorrectCustomArrayInsertException, IncorrectCustomArrayException;
+    boolean replaceStream(CustomArray customArray, int index, int value) throws CustomArrayException;
 
-    void replaceAll(CustomArray customArray, int find, int valueToReplace) throws IncorrectCustomArrayInsertException, IncorrectCustomArrayException;
+    boolean replaceAll(CustomArray customArray, int find, int valueToReplace) throws CustomArrayException;
 
-    void replaceAllStream(CustomArray customArray, int find, int valueToReplace) throws IncorrectCustomArrayInsertException, IncorrectCustomArrayException;
+    boolean replaceAllStream(CustomArray customArray, int find, int valueToReplace) throws CustomArrayException;
 }

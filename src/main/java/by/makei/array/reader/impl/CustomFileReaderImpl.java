@@ -1,10 +1,13 @@
 package by.makei.array.reader.impl;
 
+import by.makei.array.exception.CustomArrayException;
 import by.makei.array.reader.CustomFileReader;
-import by.makei.array.validator.NumberValidator;
+import by.makei.array.validator.impl.NumberValidatorImpl;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.jetbrains.annotations.NotNull;
+
 import java.io.*;
 import java.net.URL;
 import java.util.ArrayList;
@@ -12,20 +15,19 @@ import java.util.List;
 
 
 public class CustomFileReaderImpl implements CustomFileReader {
-    //TODO don't need to be Singleton? private static final CustomFileReaderImpl instance = new CustomFileReaderImpl();
+
     private static final Logger logger = LogManager.getLogger();
+    private static final CustomFileReaderImpl instance = new CustomFileReaderImpl();
+    private CustomFileReaderImpl() {}
 
-    public CustomFileReaderImpl() {
-    } //TODO
+    public static CustomFileReaderImpl getInstance() {
+        return instance;
+    }
 
-    //TODO
-//    public static CustomFileReaderImpl getInstance() {
-//        return instance;
-//    }
 
-    @Override
-    public List<String> readLinesFromFile(String fileName) {
-        final NumberValidator numberValidator = NumberValidator.getInstance();
+    @Override @NotNull
+    public List<String> readLinesFromFile(String fileName) throws CustomArrayException {
+        final NumberValidatorImpl numberValidatorImpl = NumberValidatorImpl.getInstance();
         String line;
         fileName = fileName.replace("\\", "/");
         List<String> list = new ArrayList<>();
@@ -34,16 +36,16 @@ public class CustomFileReaderImpl implements CustomFileReader {
         file = new File(url.getFile());
         try (BufferedReader bufferedReader = new BufferedReader(new FileReader(file))) {
             while ((line = bufferedReader.readLine()) != null) {
-                if (numberValidator.validateStringWithIntegers(line)) {
+                if (numberValidatorImpl.validateStringWithIntegers(line)) {
                     list.add(line);
                 }
             }
         } catch (FileNotFoundException e) {
-            logger.log(Level.FATAL, "Check your file  {}", file.getAbsolutePath());
-            throw new RuntimeException("File can't be read", e);
+            logger.log(Level.ERROR, "Check your file  {}", file.getAbsolutePath());
+            throw new CustomArrayException("File can't be read", e);
         } catch (IOException e) {
-            logger.log(Level.FATAL, "Check your file  {}", file.getAbsolutePath());
-            throw new RuntimeException("File can't be read", e);
+            logger.log(Level.ERROR, "Check your file  {}", file.getAbsolutePath());
+            throw new CustomArrayException("File can't be read", e);
         }
 
         return list;

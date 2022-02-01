@@ -1,8 +1,7 @@
 package by.makei.array.service.impl;
 
 import by.makei.array.entity.CustomArray;
-import by.makei.array.exception.IncorrectCustomArrayInsertException;
-import by.makei.array.exception.IncorrectCustomArrayException;
+import by.makei.array.exception.CustomArrayException;
 import by.makei.array.service.CustomUtil;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
@@ -26,21 +25,23 @@ public class CustomUtilImpl implements CustomUtil {
     }
 
     @Override
-    public void replace(CustomArray customArray, int index, int value) throws IncorrectCustomArrayException {
+    public boolean replace(CustomArray customArray, int index, int value) throws CustomArrayException {
         if (validate(customArray)) {
             int[] array = customArray.getIntArray();
-            array[index] = value;
             try {
-                customArray.setIntArray(array);
-                logger.log(Level.INFO, "Value on index {} was replaced with {} ",  index ,  value);
-            } catch (IncorrectCustomArrayInsertException e) {
-                logger.log(Level.WARN, "Exception can't be thrown");
+                array[index] = value;
+            }catch (ArrayIndexOutOfBoundsException e){
+                logger.log(Level.ERROR, "Value on index {} more then array length {} ", index, array.length-1);
+                return false;
             }
+            logger.log(Level.INFO, "Value on index {} was replaced with {} ", index, value);
+            return customArray.setIntArray(array);
         }
+        return false;
     }
 
     @Override
-    public void replaceStream(CustomArray customArray, int index, int value) throws IncorrectCustomArrayException {
+    public boolean replaceStream(CustomArray customArray, int index, int value) throws CustomArrayException {
         if (validate(customArray)) {
             int[] array = customArray.getIntArray();
             List<Integer> listFromArray = new ArrayList<>();
@@ -56,18 +57,15 @@ public class CustomUtilImpl implements CustomUtil {
                     listFromArray.stream().skip(index + 1)
             ).collect(Collectors.toList());
             int[] resultArray = resultList.stream().mapToInt(i -> i).toArray();
-            try {
-                customArray.setIntArray(resultArray);
-                logger.log(Level.INFO, "Value on index {} was replaced with {}", index, value);
-            } catch (IncorrectCustomArrayInsertException e) {
-                logger.log(Level.WARN, "Exception can't be thrown", e);
-
-            }
+            logger.log(Level.INFO, "Value on index {} was replaced with {}", index, value);
+            return customArray.setIntArray(resultArray);
         }
+        return false;
     }
 
+    //TODO check if no one element was replaced?
     @Override
-    public void replaceAll(CustomArray customArray, int find, int valueToReplace) throws IncorrectCustomArrayException {
+    public boolean replaceAll(CustomArray customArray, int find, int valueToReplace) throws CustomArrayException {
         if (validate(customArray)) {
             int[] array = customArray.getIntArray();
             int count = 0;
@@ -77,37 +75,31 @@ public class CustomUtilImpl implements CustomUtil {
                     count++;
                 }
             }
-            try {
-                customArray.setIntArray(array);
-                logger.log(Level.INFO, "{} elements were replaced", count);
-            } catch (IncorrectCustomArrayInsertException e) {
-                logger.error("Exception can't be thrown");
-            }
+            logger.log(Level.INFO, "{} elements were replaced", count);
+            return customArray.setIntArray(array);
         }
+        return false;
     }
-
+    //TODO check if no one element was replaced?
     @Override
-    public void replaceAllStream(CustomArray customArray, int find, int valueToReplace) throws IncorrectCustomArrayException {
+    public boolean replaceAllStream(CustomArray customArray, int find, int valueToReplace) throws CustomArrayException {
         if (validate(customArray)) {
             int[] array = customArray.getIntArray();
             int[] resultArray = Arrays.stream(array).map(val -> val == find ? valueToReplace : val).toArray();
-            try {
-                customArray.setIntArray(resultArray);
-                logger.log(Level.INFO, "Elements were replaced");
-            } catch (IncorrectCustomArrayInsertException e) {
-                logger.log(Level.WARN, "Exception can't be thrown");
-            }
+            logger.log(Level.INFO, "Elements were replaced");
+            return customArray.setIntArray(resultArray);
         }
+        return false;
     }
 
-    private boolean validate(CustomArray customArray) throws IncorrectCustomArrayException {
+    private boolean validate(CustomArray customArray) throws CustomArrayException {
         if (customArray != null) {
             if (customArray.getIntArray() != null && customArray.getIntArray().length > 0) {
                 return true;
             }
         }
         //logger.log(Level.ERROR, "Incorrect CustomArray (is null or array is null or length <1");
-        throw new IncorrectCustomArrayException("Incorrect CustomArray (is null or array is null or length <1");
+        throw new CustomArrayException("Incorrect CustomArray (is null or array is null or length <1");
     }
 
 }

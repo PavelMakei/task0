@@ -1,26 +1,47 @@
 package by.makei.array.entity;
 
-import by.makei.array.exception.IncorrectCustomArrayInsertException;
+import by.makei.array.exception.CustomArrayException;
+import by.makei.array.observer.CustomArrayObserver;
+import by.makei.array.observer.Observable;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 
-public class CustomArray {
-    public static final Logger logger = LogManager.getLogger();
+public class CustomArray implements Observable {
+    private final String id;
+    private static final Logger logger = LogManager.getLogger();
     private int[] intArray;
+    private List<CustomArrayObserver> listObservers = new ArrayList<>();
 
-    public CustomArray(int[] array) {
-        this.intArray = cloneArray(array);
+    {
+        id = GeneratorId.getInstance().getId();
     }
 
-    public void setIntArray(int[] intArray) throws IncorrectCustomArrayInsertException {
-        if (this.intArray.length == intArray.length) {
+    public CustomArray(int[] intArray) throws CustomArrayException {
+        if (intArray != null && intArray.length > 0) {
             this.intArray = cloneArray(intArray);
         } else {
-            logger.log(Level.ERROR,"Array has invalid length!");
-            throw new IncorrectCustomArrayInsertException("Invalid array! Can't be implemented.");
+            logger.log(Level.ERROR, "Array is null or less then 1!");
+            throw new CustomArrayException("Invalid array! Can't be implemented.");
+        }
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public boolean setIntArray(int[] intArray) {
+        if (intArray != null && this.intArray.length == intArray.length) {
+            this.intArray = cloneArray(intArray);
+            notifyObservers();
+            return true;
+        } else {
+            logger.log(Level.ERROR, "Array has invalid length!");
+            return false;
         }
     }
 
@@ -36,17 +57,16 @@ public class CustomArray {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
+        if(!id.equals(((CustomArray) o).getId())){
+            return false;
+        }
         CustomArray arr = (CustomArray) o;
         return Arrays.equals(this.intArray, arr.intArray);
     }
 
     @Override
     public int hashCode() {
-        StringBuilder hashNumber = new StringBuilder("");
-        for (int i = 0; i < intArray.length; i++) {
-            hashNumber.append(intArray[i] + Integer.toString(0));
-        }
-        return Integer.parseInt(hashNumber.toString());
+        return id.hashCode();
     }
 
     @Override
@@ -62,4 +82,23 @@ public class CustomArray {
         return Arrays.copyOf(intArray, intArray.length);
     }
 
+    @Override
+    public void attach(CustomArrayObserver observer) {
+        listObservers.add(observer);
+    }
+
+    @Override
+    public void detach(CustomArrayObserver observer) {
+        listObservers.remove(observer);
+
+    }
+
+    @Override
+    public void notifyObservers() {
+        if(!listObservers.isEmpty()) {
+            for (CustomArrayObserver observer : listObservers) {
+                observer.changeElement(this);
+            }
+        }
+    }
 }

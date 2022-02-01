@@ -2,7 +2,7 @@ package by.makei.array.parser.impl;
 
 public class CustomArrayParserImpl {
     private static final CustomArrayParserImpl instance = new CustomArrayParserImpl();
-    private final String REGEX_DELIMITER = "\\s+";
+    private static final String REGEX_DELIMITER = "\\s+";
 //TODO if it need logger?
 
     private CustomArrayParserImpl() {
@@ -12,7 +12,7 @@ public class CustomArrayParserImpl {
         return instance;
     }
 
-    public int[] convert(String line) {
+    public int[] convertStringToIntegersArray(String line) {
         line = line.strip();
         String[] numbers = line.split(REGEX_DELIMITER);
         int length = numbers.length;

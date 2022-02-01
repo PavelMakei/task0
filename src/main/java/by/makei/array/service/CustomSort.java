@@ -1,13 +1,12 @@
 package by.makei.array.service;
 
 import by.makei.array.entity.CustomArray;
-import by.makei.array.exception.IncorrectCustomArrayInsertException;
-import by.makei.array.exception.IncorrectCustomArrayException;
+import by.makei.array.exception.CustomArrayException;
 
 public interface CustomSort {
-    void bubbleSort(CustomArray customArray) throws IncorrectCustomArrayException, IncorrectCustomArrayInsertException;
-    void selectionSort(CustomArray customArray) throws IncorrectCustomArrayException;
-    void insertSort(CustomArray customArray) throws IncorrectCustomArrayException;
-    void streamSort(CustomArray customArray) throws IncorrectCustomArrayException;
+    boolean bubbleSort(CustomArray customArray) throws CustomArrayException;
+    boolean selectionSort(CustomArray customArray) throws CustomArrayException;
+    boolean insertSort(CustomArray customArray) throws CustomArrayException;
+    boolean streamSort(CustomArray customArray) throws CustomArrayException;
 
 }

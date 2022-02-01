@@ -1,0 +1,106 @@
+2022-02-01 17:45:12 [main] INFO  makei.array.factory.impl.CustomArrayFactoryImpl - New CustomArray is created
+2022-02-01 17:45:12 [main] INFO  makei.array.factory.impl.CustomArrayFactoryImpl - New CustomArray is added to repository
+2022-02-01 17:45:12 [main] INFO  makei.array.service.impl.CustomMathImpl - find max = 146
+2022-02-01 17:45:12 [main] INFO  makei.array.service.impl.CustomMathImpl - find min = -22
+2022-02-01 17:45:12 [main] INFO  makei.array.service.impl.CustomMathImpl - find average = 42.333333333333336
+2022-02-01 17:45:12 [main] INFO  makei.array.factory.impl.CustomArrayFactoryImpl - New CustomArrayStatistics is added to warehouse
+2022-02-01 17:45:12 [main] INFO  makei.array.factory.impl.CustomArrayFactoryImpl - Observer is added to new CustomArray
+2022-02-01 17:45:12 [main] INFO  by.makei.array.main.UserMain - New CustomArray was created and added to the customArrays list
+2022-02-01 17:45:12 [main] INFO  makei.array.factory.impl.CustomArrayFactoryImpl - New CustomArray is created
+2022-02-01 17:45:12 [main] INFO  makei.array.factory.impl.CustomArrayFactoryImpl - New CustomArray is added to repository
+2022-02-01 17:45:12 [main] INFO  makei.array.service.impl.CustomMathImpl - find max = 5859632
+2022-02-01 17:45:12 [main] INFO  makei.array.service.impl.CustomMathImpl - find min = -5544332
+2022-02-01 17:45:12 [main] INFO  makei.array.service.impl.CustomMathImpl - find average = 79189.0
+2022-02-01 17:45:12 [main] INFO  makei.array.factory.impl.CustomArrayFactoryImpl - New CustomArrayStatistics is added to warehouse
+2022-02-01 17:45:12 [main] INFO  makei.array.factory.impl.CustomArrayFactoryImpl - Observer is added to new CustomArray
+2022-02-01 17:45:12 [main] INFO  by.makei.array.main.UserMain - New CustomArray was created and added to the customArrays list
+2022-02-01 17:45:12 [main] INFO  makei.array.factory.impl.CustomArrayFactoryImpl - New CustomArray is created
+2022-02-01 17:45:12 [main] INFO  makei.array.factory.impl.CustomArrayFactoryImpl - New CustomArray is added to repository
+2022-02-01 17:45:12 [main] INFO  makei.array.service.impl.CustomMathImpl - find max = 345
+2022-02-01 17:45:12 [main] INFO  makei.array.service.impl.CustomMathImpl - find min = 0
+2022-02-01 17:45:12 [main] INFO  makei.array.service.impl.CustomMathImpl - find average = 136.66666666666666
+2022-02-01 17:45:12 [main] INFO  makei.array.factory.impl.CustomArrayFactoryImpl - New CustomArrayStatistics is added to warehouse
+2022-02-01 17:45:12 [main] INFO  makei.array.factory.impl.CustomArrayFactoryImpl - Observer is added to new CustomArray
+2022-02-01 17:45:12 [main] INFO  by.makei.array.main.UserMain - New CustomArray was created and added to the customArrays list
+2022-02-01 17:45:12 [main] INFO  makei.array.factory.impl.CustomArrayFactoryImpl - New CustomArray is created
+2022-02-01 17:45:12 [main] INFO  makei.array.factory.impl.CustomArrayFactoryImpl - New CustomArray is added to repository
+2022-02-01 17:45:12 [main] INFO  makei.array.service.impl.CustomMathImpl - find max = 345980485
+2022-02-01 17:45:12 [main] INFO  makei.array.service.impl.CustomMathImpl - find min = -34534452
+2022-02-01 17:45:12 [main] INFO  makei.array.service.impl.CustomMathImpl - find average = 7.786370125E7
+2022-02-01 17:45:12 [main] INFO  makei.array.factory.impl.CustomArrayFactoryImpl - New CustomArrayStatistics is added to warehouse
+2022-02-01 17:45:12 [main] INFO  makei.array.factory.impl.CustomArrayFactoryImpl - Observer is added to new CustomArray
+2022-02-01 17:45:12 [main] INFO  by.makei.array.main.UserMain - New CustomArray was created and added to the customArrays list
+2022-02-01 17:45:12 [main] INFO  makei.array.service.impl.CustomUtilImpl - Value on index 1 was replaced with 7777777 
+2022-02-01 17:45:12 [main] INFO  makei.array.service.impl.CustomMathImpl - find max = 7777777
+2022-02-01 17:45:12 [main] INFO  makei.array.service.impl.CustomMathImpl - find min = -5544332
+2022-02-01 17:45:12 [main] INFO  makei.array.service.impl.CustomMathImpl - find average = 2023300.0
+2022-02-01 17:45:12 [main] INFO  makei.array.service.impl.CustomMathImpl - find max = 7777777
+2022-02-01 17:45:12 [main] INFO  makei.array.service.impl.CustomMathImpl - find min = -5544332
+2022-02-01 17:45:12 [main] INFO  makei.array.service.impl.CustomMathImpl - find average = 2023300.0
+2022-02-01 22:26:19 [main] INFO  makei.array.validator.impl.NumberValidatorImpl - literal  92 2342334 35 567.5 can not be parsed to int
+2022-02-01 22:26:19 [main] INFO  makei.array.validator.impl.NumberValidatorImpl - literal 457567 234a 5675768 567 -590 can not be parsed to int
+2022-02-01 22:26:57 [main] INFO  makei.array.validator.impl.NumberValidatorImpl - literal 23 34 -1230 453231 -1234567890 77 can not be parsed to int
+2022-02-01 22:26:57 [main] INFO  makei.array.validator.impl.NumberValidatorImpl - literal  92 2342334 35 567.5 can not be parsed to int
+2022-02-01 22:26:57 [main] INFO  makei.array.validator.impl.NumberValidatorImpl - literal 457567 234a 5675768 567 -590 can not be parsed to int
+2022-02-01 22:29:09 [main] INFO  makei.array.validator.impl.NumberValidatorImpl - literal 23,34 -1230 453231 -12345678 77 can not be parsed to int
+2022-02-01 22:29:09 [main] INFO  makei.array.validator.impl.NumberValidatorImpl - literal  92 2342334 35 567.5 can not be parsed to int
+2022-02-01 22:29:09 [main] INFO  makei.array.validator.impl.NumberValidatorImpl - literal 457567 234a 5675768 567 -590 can not be parsed to int
+2022-02-01 22:29:09 [main] INFO  makei.array.validator.impl.NumberValidatorImpl - literal 1234567890 -55 9234 22 can not be parsed to int
+2022-02-01 22:30:22 [main] INFO  makei.array.validator.impl.NumberValidatorImpl - String 23,34 -1230 453231 -12345678 77 can not be parsed to int
+2022-02-01 22:30:22 [main] INFO  makei.array.validator.impl.NumberValidatorImpl - String  92 2342334 35 567.5 can not be parsed to int
+2022-02-01 22:30:22 [main] INFO  makei.array.validator.impl.NumberValidatorImpl - String 457567 234a 5675768 567 -590 can not be parsed to int
+2022-02-01 22:30:22 [main] INFO  makei.array.validator.impl.NumberValidatorImpl - String 1234567890 -55 9234 22 can not be parsed to int
+2022-02-01 22:31:21 [main] INFO  makei.array.validator.impl.FileValidatorImpl - File is correct
+2022-02-01 22:31:21 [main] INFO  makei.array.validator.impl.NumberValidatorImpl - String 83 14 343ф 234 can not be parsed to int
+2022-02-01 22:32:50 [main] INFO  makei.array.validator.impl.NumberValidatorImpl - String 23,34 -1230 453231 -12345678 77 can not be parsed to int
+2022-02-01 22:32:51 [main] INFO  makei.array.validator.impl.NumberValidatorImpl - String  92 2342334 35 567.5 can not be parsed to int
+2022-02-01 22:32:51 [main] INFO  makei.array.validator.impl.NumberValidatorImpl - String 457567 234a 5675768 567 -590 can not be parsed to int
+2022-02-01 22:33:19 [main] INFO  makei.array.validator.impl.NumberValidatorImpl - String 23,34 -1230 453231 -12345678 77 can not be parsed to int
+2022-02-01 22:33:19 [main] INFO  makei.array.validator.impl.NumberValidatorImpl - String  92 2342334 35 567.5 can not be parsed to int
+2022-02-01 22:33:19 [main] INFO  makei.array.validator.impl.NumberValidatorImpl - String 457567 234a 5675768 567 -590 can not be parsed to int
+2022-02-01 22:34:11 [main] INFO  makei.array.validator.impl.NumberValidatorImpl - String 23,34 -1230 453231 -12345678 77 can not be parsed to int
+2022-02-01 22:34:11 [main] INFO  makei.array.validator.impl.NumberValidatorImpl - String  92 2342334 35 567.5 can not be parsed to int
+2022-02-01 22:34:11 [main] INFO  makei.array.validator.impl.NumberValidatorImpl - String 457567 234a 5675768 567 -590 can not be parsed to int
+2022-02-01 22:35:08 [main] INFO  makei.array.validator.impl.NumberValidatorImpl - String 23,34 -1230 453231 -12345678 77 can not be parsed to int
+2022-02-01 22:35:08 [main] INFO  makei.array.validator.impl.NumberValidatorImpl - String  92 2342334 35 567.5 can not be parsed to int
+2022-02-01 22:35:08 [main] INFO  makei.array.validator.impl.NumberValidatorImpl - String 457567 234a 5675768 567 -590 can not be parsed to int
+2022-02-01 22:35:44 [main] INFO  makei.array.validator.impl.NumberValidatorImpl - String 23,34 -1230 453231 -12345678 77 can not be parsed to int
+2022-02-01 22:35:44 [main] INFO  makei.array.validator.impl.NumberValidatorImpl - String  92 2342334 35 567.5 can not be parsed to int
+2022-02-01 22:35:44 [main] INFO  makei.array.validator.impl.NumberValidatorImpl - String 457567 234a 5675768 567 -590 can not be parsed to int
+2022-02-01 22:36:31 [main] INFO  makei.array.validator.impl.NumberValidatorImpl - String 23,34 -1230 453231 -12345678 77 can not be parsed to int
+2022-02-01 22:36:31 [main] INFO  makei.array.validator.impl.NumberValidatorImpl - String  92 2342334 35 567.5 can not be parsed to int
+2022-02-01 22:36:31 [main] INFO  makei.array.validator.impl.NumberValidatorImpl - String 457567 234a 5675768 567 -590 can not be parsed to int
+2022-02-01 22:36:31 [main] INFO  makei.array.validator.impl.NumberValidatorImpl - String 21474836480 can not be parsed to int
+2022-02-01 22:36:43 [main] INFO  makei.array.validator.impl.NumberValidatorImpl - String 23,34 -1230 453231 -12345678 77 can not be parsed to int
+2022-02-01 22:36:43 [main] INFO  makei.array.validator.impl.NumberValidatorImpl - String  92 2342334 35 567.5 can not be parsed to int
+2022-02-01 22:36:43 [main] INFO  makei.array.validator.impl.NumberValidatorImpl - String 457567 234a 5675768 567 -590 can not be parsed to int
+2022-02-01 22:37:11 [main] INFO  makei.array.validator.impl.NumberValidatorImpl - String 23,34 -1230 453231 -12345678 77 can not be parsed to int
+2022-02-01 22:37:11 [main] INFO  makei.array.validator.impl.NumberValidatorImpl - String  92 2342334 35 567.5 can not be parsed to int
+2022-02-01 22:37:11 [main] INFO  makei.array.validator.impl.NumberValidatorImpl - String 457567 234a 5675768 567 -590 can not be parsed to int
+2022-02-01 22:37:44 [main] INFO  makei.array.validator.impl.NumberValidatorImpl - String 23,34 -1230 453231 -12345678 77 can not be parsed to int
+2022-02-01 22:37:44 [main] INFO  makei.array.validator.impl.NumberValidatorImpl - String  92 2342334 35 567.5 can not be parsed to int
+2022-02-01 22:37:44 [main] INFO  makei.array.validator.impl.NumberValidatorImpl - String 457567 234a 5675768 567 -590 can not be parsed to int
+2022-02-01 22:37:56 [main] INFO  makei.array.validator.impl.NumberValidatorImpl - String 23,34 -1230 453231 -12345678 77 can not be parsed to int
+2022-02-01 22:37:56 [main] INFO  makei.array.validator.impl.NumberValidatorImpl - String  92 2342334 35 567.5 can not be parsed to int
+2022-02-01 22:37:56 [main] INFO  makei.array.validator.impl.NumberValidatorImpl - String 457567 234a 5675768 567 -590 can not be parsed to int
+2022-02-01 22:38:25 [main] INFO  makei.array.validator.impl.NumberValidatorImpl - String 23,34 -1230 453231 -12345678 77 can not be parsed to int
+2022-02-01 22:38:25 [main] INFO  makei.array.validator.impl.NumberValidatorImpl - String  92 2342334 35 567.5 can not be parsed to int
+2022-02-01 22:38:25 [main] INFO  makei.array.validator.impl.NumberValidatorImpl - String 457567 234a 5675768 567 -590 can not be parsed to int
+2022-02-01 22:38:25 [main] INFO  makei.array.validator.impl.NumberValidatorImpl - String -21474836480 can not be parsed to int
+2022-02-01 22:38:44 [main] INFO  makei.array.validator.impl.NumberValidatorImpl - String 23,34 -1230 453231 -12345678 77 can not be parsed to int
+2022-02-01 22:38:44 [main] INFO  makei.array.validator.impl.NumberValidatorImpl - String  92 2342334 35 567.5 can not be parsed to int
+2022-02-01 22:38:44 [main] INFO  makei.array.validator.impl.NumberValidatorImpl - String 457567 234a 5675768 567 -590 can not be parsed to int
+2022-02-01 22:39:39 [main] INFO  makei.array.validator.impl.NumberValidatorImpl - String 23,34 -1230 453231 -12345678 77 can not be parsed to int
+2022-02-01 22:39:39 [main] INFO  makei.array.validator.impl.NumberValidatorImpl - String  92 2342334 35 567.5 can not be parsed to int
+2022-02-01 22:39:39 [main] INFO  makei.array.validator.impl.NumberValidatorImpl - String 457567 234a 5675768 567 -590 can not be parsed to int
+2022-02-01 22:39:50 [main] INFO  makei.array.validator.impl.NumberValidatorImpl - String 23,34 -1230 453231 -12345678 77 can not be parsed to int
+2022-02-01 22:39:50 [main] INFO  makei.array.validator.impl.NumberValidatorImpl - String  92 2342334 35 567.5 can not be parsed to int
+2022-02-01 22:39:50 [main] INFO  makei.array.validator.impl.NumberValidatorImpl - String 457567 234a 5675768 567 -590 can not be parsed to int
+2022-02-01 22:39:50 [main] INFO  makei.array.validator.impl.NumberValidatorImpl - String -12345678901 can not be parsed to int
+2022-02-01 22:40:07 [main] INFO  makei.array.validator.impl.NumberValidatorImpl - String 23,34 -1230 453231 -12345678 77 can not be parsed to int
+2022-02-01 22:40:07 [main] INFO  makei.array.validator.impl.NumberValidatorImpl - String  92 2342334 35 567.5 can not be parsed to int
+2022-02-01 22:40:07 [main] INFO  makei.array.validator.impl.NumberValidatorImpl - String 457567 234a 5675768 567 -590 can not be parsed to int
+2022-02-01 22:40:07 [main] INFO  makei.array.validator.impl.NumberValidatorImpl - String -12345678901 345 543 can not be parsed to int
+2022-02-01 22:48:00 [main] INFO  makei.array.validator.impl.NumberValidatorImpl - String null can not be parsed to int
+2022-02-01 22:50:22 [main] INFO  makei.array.validator.impl.NumberValidatorImpl - String  can not be parsed to int
+2022-02-01 23:05:01 [main] ERROR makei.array.validator.impl.FileValidatorImpl - FileName is null

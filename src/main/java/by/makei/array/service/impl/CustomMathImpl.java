@@ -1,9 +1,7 @@
 package by.makei.array.service.impl;
 
 import by.makei.array.entity.CustomArray;
-import by.makei.array.exception.IncorrectCustomArrayArithmeticException;
-import by.makei.array.exception.IncorrectCustomArrayInsertException;
-import by.makei.array.exception.IncorrectCustomArrayException;
+import by.makei.array.exception.CustomArrayException;
 import by.makei.array.service.CustomMath;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
@@ -29,12 +27,12 @@ public class CustomMathImpl implements CustomMath {
     public int findMax(CustomArray customArray) {
         int[] array = customArray.getIntArray();
         int result = Integer.MIN_VALUE;
-        for (int i = 0; i < array.length; i++) {
-            if (array[i] > result) {
-                result = array[i];
+        for (int i : array) {
+            if (i > result) {
+                result = i;
             }
         }
-        logger.log(Level.INFO, "find max = %f" + result);
+        logger.log(Level.INFO, "find max = {}", result);
         return result;
     }
 
@@ -42,7 +40,7 @@ public class CustomMathImpl implements CustomMath {
     public int findMaxStream(CustomArray customArray) {
         int[] array = customArray.getIntArray();
         int result = IntStream.of(array).max().getAsInt();
-        logger.log(Level.INFO, "find max stream = " + result);
+        logger.log(Level.INFO, "find max stream = {}", result);
         return result;
     }
 
@@ -55,7 +53,7 @@ public class CustomMathImpl implements CustomMath {
                 result = array[i];
             }
         }
-        logger.log(Level.INFO, "find min = " + result);
+        logger.log(Level.INFO, "find min = {}", result);
         return result;
     }
 
@@ -63,51 +61,51 @@ public class CustomMathImpl implements CustomMath {
     public int findMinStream(CustomArray customArray) {
         int[] array = customArray.getIntArray();
         int result = Arrays.stream(array).min().getAsInt();
-        logger.log(Level.INFO, "find min stream = " + result);
+        logger.log(Level.INFO, "find min stream = {}", result);
         return result;
     }
 
     @Override
     public double findAverage(CustomArray customArray) {
         int[] array = customArray.getIntArray();
-        long sum = 0;
-        for (int i = 0; i < array.length; i++) {
-            sum += array[i];
+        long sum = 0L;
+        for (int i : array) {
+            sum += i;
         }
-        double result = sum / array.length;
-        logger.log(Level.INFO, "find average = " + result);
+        double result = (double) sum / array.length;
+        logger.log(Level.INFO, "find average = {}", result);
         return result;
     }
 
     @Override
     public double findAverageStream(CustomArray customArray) {
         int[] array = customArray.getIntArray();
-        double result = Arrays.stream(array).average().getAsDouble();
-        logger.log(Level.INFO, "find average stream = " + result);
+        double result = Arrays.stream(array).mapToDouble(value -> value).average().getAsDouble();
+        logger.log(Level.INFO, "find average stream = {}", result);
         return result;
     }
 
     @Override
-    public int sumArray(CustomArray customArray) throws IncorrectCustomArrayArithmeticException, IncorrectCustomArrayException {
+    public int sumArray(CustomArray customArray) throws CustomArrayException {
         if (validate(customArray)) {
             int[] array = customArray.getIntArray();
             int result = 0;
             try {
-                for (int i = 0; i < array.length; i++) {
-                    result = Math.addExact(result, array[i]);
+                for (int i : array) {
+                    result = Math.addExact(result, i);
                 }
-                logger.log(Level.INFO, "sum stream = " + result);
+                logger.log(Level.INFO, "sum stream = {}", result);
                 return result;
             } catch (ArithmeticException e) {
                 logger.log(Level.ERROR, "The sum of array is too big or too low", e);
-                throw new IncorrectCustomArrayArithmeticException("The sum of array is too big or too low", e);
+                throw new CustomArrayException("The sum of array is too big or too low", e);
             }
         }
         return 0;
     }
 
     @Override
-    public int sumArrayStream(CustomArray customArray) throws IncorrectCustomArrayException, IncorrectCustomArrayArithmeticException {
+    public int sumArrayStream(CustomArray customArray) throws CustomArrayException {
         if (validate(customArray)) {
             int[] array = customArray.getIntArray();
             BigInteger sum = Arrays.stream(array).mapToObj(BigInteger::valueOf)
@@ -117,15 +115,15 @@ public class CustomMathImpl implements CustomMath {
                 logger.log(Level.INFO, "find average stream = {}", result);
                 return result;
             } catch (ArithmeticException e) {
-               // logger.error("The sum of array is too big or too low");
-                throw new IncorrectCustomArrayArithmeticException("The sum of array is too big or too low", e);
+                // logger.error("The sum of array is too big or too low");
+                throw new CustomArrayException("The sum of array is too big or too low", e);
             }
         }
         return 0;
     }
 
     @Override
-    public int countPositive(CustomArray customArray) throws IncorrectCustomArrayException {
+    public int countPositive(CustomArray customArray) throws CustomArrayException {
         if (validate(customArray)) {
             int[] array = customArray.getIntArray();
             long result = 0;
@@ -141,7 +139,7 @@ public class CustomMathImpl implements CustomMath {
     }
 
     @Override
-    public int countPositiveStream(CustomArray customArray) throws IncorrectCustomArrayException {
+    public int countPositiveStream(CustomArray customArray) throws CustomArrayException {
         if (validate(customArray)) {
             int[] array = customArray.getIntArray();
             long result = Arrays.stream(array).filter(a -> a > 0).count();
@@ -152,12 +150,12 @@ public class CustomMathImpl implements CustomMath {
     }
 
     @Override
-    public int countNegative(CustomArray customArray) throws IncorrectCustomArrayException {
+    public int countNegative(CustomArray customArray) throws CustomArrayException {
         if (validate(customArray)) {
             int[] array = customArray.getIntArray();
             long result = 0;
-            for (int i = 0; i < array.length; i++) {
-                if (array[i] < 0) {
+            for (int i : array) {
+                if (i < 0) {
                     result++;
                 }
             }
@@ -168,7 +166,7 @@ public class CustomMathImpl implements CustomMath {
     }
 
     @Override
-    public int countNegativeStream(CustomArray customArray) throws IncorrectCustomArrayException {
+    public int countNegativeStream(CustomArray customArray) throws CustomArrayException {
         if (validate(customArray)) {
             int[] array = customArray.getIntArray();
             long result = Arrays.stream(array).filter(a -> a < 0).count();
@@ -178,13 +176,13 @@ public class CustomMathImpl implements CustomMath {
         return 0;
     }
 
-    private boolean validate(CustomArray customArray) throws IncorrectCustomArrayException {
+    private boolean validate(CustomArray customArray) throws CustomArrayException {
         if (customArray != null) {
             if (customArray.getIntArray() != null && customArray.getIntArray().length > 0) {
                 return true;
             }
         }
         //logger.log(Level.ERROR, "Incorrect CustomArray (is null or array is null or length <1");
-        throw new IncorrectCustomArrayException("Incorrect CustomArray (is null or array is null or length <1");
+        throw new CustomArrayException("Incorrect CustomArray (is null or array is null or length <1");
     }
 }
