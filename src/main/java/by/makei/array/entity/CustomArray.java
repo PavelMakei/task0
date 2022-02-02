@@ -64,6 +64,14 @@ public class CustomArray implements Observable {
         return Arrays.equals(this.intArray, arr.intArray);
     }
 
+    private int[] cloneArray(int[] intArray) {
+        return Arrays.copyOf(intArray, intArray.length);
+    }
+
+    private int[] cloneArray() {
+        return Arrays.copyOf(intArray, intArray.length);
+    }
+
     @Override
     public int hashCode() {
         return id.hashCode();
@@ -72,14 +80,6 @@ public class CustomArray implements Observable {
     @Override
     public String toString() {
         return Arrays.toString(intArray);
-    }
-
-    private int[] cloneArray(int[] intArray) {
-        return Arrays.copyOf(intArray, intArray.length);
-    }
-
-    private int[] cloneArray() {
-        return Arrays.copyOf(intArray, intArray.length);
     }
 
     @Override
