@@ -18,7 +18,8 @@ public class CustomArrayFactoryImpl implements CustomArrayFactory {
     private static final Logger logger = LogManager.getLogger();
     private static final CustomArrayFactoryImpl instance = new CustomArrayFactoryImpl();
 
-    private CustomArrayFactoryImpl (){}
+    private CustomArrayFactoryImpl() {
+    }
 
     public static CustomArrayFactoryImpl getInstance() {
         return instance;
@@ -26,17 +27,18 @@ public class CustomArrayFactoryImpl implements CustomArrayFactory {
 
     @Override
     public CustomArray createCustomArray(int[] intArray) throws CustomArrayException {
-        CustomArray customArray;
-        if(intArray!= null && intArray.length>0){
-            customArray = new CustomArray(intArray);
-            logger.log(Level.INFO, "New CustomArray is created");
-            addToRepository(customArray);
-            addToWarehouse(customArray);
-            addObserverToNewCustomArray(customArray);
-            return customArray;
-        }else {
-            throw new CustomArrayException("IntArray = null, or intArray length < 1");
+        if (intArray == null || intArray.length == 0) {
+            logger.log(Level.ERROR, "IntArray = null, or intArray length = 0");
+            throw new CustomArrayException("IntArray = null, or intArray length = 0");
         }
+
+        CustomArray customArray;
+        customArray = new CustomArray(intArray);
+        logger.log(Level.INFO, "New CustomArray is created");
+        addToRepository(customArray);
+        addToWarehouse(customArray);
+        addObserverToNewCustomArray(customArray);
+        return customArray;
     }
 
     private void addObserverToNewCustomArray(CustomArray customArray) {
@@ -50,8 +52,7 @@ public class CustomArrayFactoryImpl implements CustomArrayFactory {
         int max = customMath.findMax(customArray);
         int min = customMath.findMin(customArray);
         double average = customMath.findAverage(customArray);
-        //int sum = customMath.sumArray(customArray);//как обрабатывать исключение по переполнению? Может сумму в long или BigInteger?
-        CustomArrayStatistics customArrayStatistics = new CustomArrayStatistics(min,max,average);
+        CustomArrayStatistics customArrayStatistics = new CustomArrayStatistics(min, max, average);
         Warehouse warehouse = Warehouse.getInstance();
         warehouse.put(customArray.getId(), customArrayStatistics);
         logger.log(Level.INFO, "New CustomArrayStatistics is added to warehouse");

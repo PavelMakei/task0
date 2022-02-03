@@ -6,7 +6,6 @@ import by.makei.array.service.CustomMath;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-
 import java.math.BigInteger;
 import java.util.Arrays;
 import java.util.stream.IntStream;
@@ -21,7 +20,6 @@ public class CustomMathImpl implements CustomMath {
     public static CustomMathImpl getInstance() {
         return instance;
     }
-
 
     @Override
     public int findMax(CustomArray customArray) {
@@ -94,7 +92,7 @@ public class CustomMathImpl implements CustomMath {
                 for (int i : array) {
                     result = Math.addExact(result, i);
                 }
-                logger.log(Level.INFO, "sum stream = {}", result);
+                logger.log(Level.INFO, "sum = {}", result);
                 return result;
             } catch (ArithmeticException e) {
                 logger.log(Level.ERROR, "The sum of array is too big or too low", e);
@@ -112,7 +110,7 @@ public class CustomMathImpl implements CustomMath {
                     .reduce(BigInteger.ZERO, (a, b) -> a.add(b));
             try {
                 int result = sum.intValueExact();
-                logger.log(Level.INFO, "find average stream = {}", result);
+                logger.log(Level.INFO, "sum stream = {}", result);
                 return result;
             } catch (ArithmeticException e) {
                 // logger.error("The sum of array is too big or too low");
@@ -182,7 +180,7 @@ public class CustomMathImpl implements CustomMath {
                 return true;
             }
         }
-        //logger.log(Level.ERROR, "Incorrect CustomArray (is null or array is null or length <1");
+        logger.log(Level.ERROR, "Incorrect CustomArray (is null or array is null or length <1");
         throw new CustomArrayException("Incorrect CustomArray (is null or array is null or length <1");
     }
 }

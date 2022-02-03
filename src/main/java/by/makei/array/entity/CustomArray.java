@@ -2,23 +2,18 @@ package by.makei.array.entity;
 
 import by.makei.array.exception.CustomArrayException;
 import by.makei.array.observer.CustomArrayObserver;
-import by.makei.array.observer.Observable;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import java.util.ArrayList;
+
 import java.util.Arrays;
-import java.util.List;
 
 
-public class CustomArray implements Observable {
-    private final String id;
+public class CustomArray extends CustomArrayAbstract {
     private static final Logger logger = LogManager.getLogger();
     private int[] intArray;
-    private List<CustomArrayObserver> listObservers = new ArrayList<>();
 
-    {
-        id = GeneratorId.getInstance().getId();
+    public void getInt() {
     }
 
     public CustomArray(int[] intArray) throws CustomArrayException {
@@ -49,6 +44,14 @@ public class CustomArray implements Observable {
         return cloneArray();
     }
 
+    private int[] cloneArray(int[] intArray) {
+        return Arrays.copyOf(intArray, intArray.length);
+    }
+
+    private int[] cloneArray() {
+        return Arrays.copyOf(intArray, intArray.length);
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -57,19 +60,11 @@ public class CustomArray implements Observable {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        if(!id.equals(((CustomArray) o).getId())){
+        if (!id.equals(((CustomArray) o).getId())) {
             return false;
         }
         CustomArray arr = (CustomArray) o;
         return Arrays.equals(this.intArray, arr.intArray);
-    }
-
-    private int[] cloneArray(int[] intArray) {
-        return Arrays.copyOf(intArray, intArray.length);
-    }
-
-    private int[] cloneArray() {
-        return Arrays.copyOf(intArray, intArray.length);
     }
 
     @Override
@@ -83,22 +78,12 @@ public class CustomArray implements Observable {
     }
 
     @Override
-    public void attach(CustomArrayObserver observer) {
-        listObservers.add(observer);
-    }
-
-    @Override
-    public void detach(CustomArrayObserver observer) {
-        listObservers.remove(observer);
-
-    }
-
-    @Override
     public void notifyObservers() {
-        if(!listObservers.isEmpty()) {
+        if (!listObservers.isEmpty()) {
             for (CustomArrayObserver observer : listObservers) {
                 observer.changeElement(this);
             }
         }
     }
+
 }

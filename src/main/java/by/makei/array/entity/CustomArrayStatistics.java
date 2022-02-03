@@ -6,7 +6,6 @@ public class CustomArrayStatistics {
     private int max;
     private int min;
     private double average;
-    // private int sum; что делать в случае переполнения?
 
     public CustomArrayStatistics(int min, int max, double average) {
         this.max = max;

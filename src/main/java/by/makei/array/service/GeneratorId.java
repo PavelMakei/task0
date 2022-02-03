@@ -1,4 +1,4 @@
-package by.makei.array.entity;
+package by.makei.array.service;
 
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
@@ -15,7 +15,7 @@ public class GeneratorId {
     private static final Logger logger = LogManager.getLogger();
     private static final GeneratorId instance = new GeneratorId ();
     private static final char[] HEX_ARRAY = "0123456789ABCDEF".toCharArray();
-    private Set<String> iDset = new HashSet<>();
+    private Set<String> idSet = new HashSet<>();
 
     private GeneratorId (){};
 
@@ -25,7 +25,7 @@ public class GeneratorId {
 
     /**
      *
-     * @return String as generated with UUID unique ID
+     * @return String as generated with UUID unique ID, extended with MessageDigest to 256 bit
      */
     public String getId() {
 
@@ -35,8 +35,8 @@ public class GeneratorId {
                 MessageDigest crypto = MessageDigest.getInstance("SHA-256");
                 crypto.update(UUID.randomUUID().toString().getBytes("UTF-8"));
                 String generatedId = bytesToHex(crypto.digest());
-                if(!iDset.contains(generatedId)){
-                    iDset.add(generatedId);
+                if(!idSet.contains(generatedId)){
+                    idSet.add(generatedId);
                     return generatedId;
                 }
             }catch (UnsupportedEncodingException e) {

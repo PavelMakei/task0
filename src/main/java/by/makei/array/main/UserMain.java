@@ -1,7 +1,6 @@
 package by.makei.array.main;
 
 import by.makei.array.entity.CustomArray;
-import by.makei.array.entity.CustomArrayStatistics;
 import by.makei.array.entity.Warehouse;
 import by.makei.array.exception.CustomArrayException;
 import by.makei.array.factory.CustomArrayFactory;
@@ -27,6 +26,9 @@ import java.util.List;
 
 
 public class UserMain {
+    static int iii;
+
+
     private static final Logger logger = LogManager.getLogger(UserMain.class);
     private static final CustomMath customMath = CustomMathImpl.getInstance();
     CustomFileReaderImpl customFileReaderImpl = CustomFileReaderImpl.getInstance();
@@ -39,21 +41,13 @@ public class UserMain {
     CustomArrayObserver observer = new CustomArrayObserverImpl();
 
     public static void main(String[] args) throws CustomArrayException {
+        System.out.println(iii);
         UserMain userMain = new UserMain();
         userMain.run();
     }
 
+
     public void run() throws CustomArrayException {
-
-        int a = Integer.MIN_VALUE;
-        int b = -1;
-        int c = a+b;
-        //int d = 3000000000; - ошибка компиляции
-        int d = 3000*1000*1000*1000*1000;
-        long l = 3000000000l;
-        int g = (int)l;
-
-
 
         FileValidator fileValidator = FileValidatorImpl.getInstance();
         List<String> strings = null;
@@ -80,8 +74,8 @@ public class UserMain {
             }
 
             //int sum = customMath.sumArray(customArray);//как обрабатывать исключение по переполнению? Может сумму в long или BigInteger?
-           // CustomArrayStatistics customArrayStatistics = new CustomArrayStatistics(min, max, average);
-           // String arrayId = customArray.getId();
+            // CustomArrayStatistics customArrayStatistics = new CustomArrayStatistics(min, max, average);
+            // String arrayId = customArray.getId();
             //warehouse.put(arrayId, customArrayStatistics);// в лекции была ошибка и намеренно вставлен replace или добавлять иным способом, обсервером?
             //repository.addCustomArray(customArray);
 
@@ -93,17 +87,16 @@ public class UserMain {
         System.out.println(customArray.toString());
         System.out.println("statistics " + warehouse.get(id));
 
-        customUtil.replace(customArray,1,7777777);
+        customUtil.replace(customArray, 1, 7777777);
         System.out.println(repository.get(1));
         System.out.println("statistics " + warehouse.get(id));
 
         customSort.selectionSort(repository.get(1));
         System.out.println("statistics " + warehouse.get(id));
         System.out.println(repository.get(1));
-
-
-
     }
+
+}
 //
 //        }
 //
@@ -136,4 +129,4 @@ public class UserMain {
 //        System.out.println(customArrays.get(0).toString());
 
 
-}
+

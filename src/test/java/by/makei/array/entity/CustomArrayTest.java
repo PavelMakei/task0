@@ -3,9 +3,11 @@ package by.makei.array.entity;
 import by.makei.array.exception.CustomArrayException;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.ValueSource;
 
-import static org.junit.jupiter.api.Assertions.assertArrayEquals;
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 class CustomArrayTest {
     CustomArray customArray;
@@ -16,6 +18,8 @@ class CustomArrayTest {
 //        int[] intArray = {1,2,3,4,5};
 //        customArray = new CustomArray(id,intArray);
 //    }
+
+
 
     @Test
     public void getIdTest() throws CustomArrayException {

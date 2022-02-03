@@ -14,7 +14,6 @@ public class Warehouse {
         return instance;
     }
 
-    //для чего в лекции был принципиально удалён put?
     public CustomArrayStatistics put(String key, CustomArrayStatistics value) {
         return map.put(key, value);
     }

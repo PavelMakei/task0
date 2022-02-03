@@ -10,10 +10,10 @@ import by.makei.array.service.impl.CustomMathImpl;
 
 public class CustomArrayObserverImpl implements CustomArrayObserver {
 
-    CustomMath customMath = CustomMathImpl.getInstance();
 
     @Override
     public void changeElement(CustomArray customArray) {
+        CustomMath customMath = CustomMathImpl.getInstance();
         int max = customMath.findMax(customArray);
         int min = customMath.findMin(customArray);
         double average = customMath.findAverage(customArray);
@@ -22,8 +22,10 @@ public class CustomArrayObserverImpl implements CustomArrayObserver {
         String arrayId = customArray.getId();
         Warehouse warehouse = Warehouse.getInstance();
         warehouse.replace(arrayId, customArrayStatistics);
-        CustomArrayRepository repository = CustomArrayRepository.getInstance();
-        repository.addCustomArray(customArray);
+
+        //не нужен по причине того, что изменения вносятся непосредственно в объект
+//        CustomArrayRepository repository = CustomArrayRepository.getInstance();
+//        repository.addCustomArray(customArray);
 
     }
 }

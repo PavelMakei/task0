@@ -101,7 +101,7 @@ public class CustomSortImpl implements CustomSort {
                 return true;
             }
         }
-        //logger.log(Level.ERROR, "Incorrect CustomArray (is null or array is null or length <1");
+        logger.log(Level.ERROR, "Incorrect CustomArray (is null or array is null or length <1");
         throw new CustomArrayException("Incorrect CustomArray (is null or array is null or length <1");
     }
 

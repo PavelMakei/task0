@@ -18,6 +18,8 @@ public class CustomFileReaderImpl implements CustomFileReader {
 
     private static final Logger logger = LogManager.getLogger();
     private static final CustomFileReaderImpl instance = new CustomFileReaderImpl();
+    private static final String WINDOWS_FILE_SEPARATOR = "\\";
+    private static final String URL_FILE_SEPARATOR = "/";
     private CustomFileReaderImpl() {}
 
     public static CustomFileReaderImpl getInstance() {
@@ -29,7 +31,7 @@ public class CustomFileReaderImpl implements CustomFileReader {
     public List<String> readLinesFromFile(String fileName) throws CustomArrayException {
         final NumberValidatorImpl numberValidatorImpl = NumberValidatorImpl.getInstance();
         String line;
-        fileName = fileName.replace("\\", "/");
+        fileName = fileName.replace(WINDOWS_FILE_SEPARATOR, URL_FILE_SEPARATOR);
         List<String> list = new ArrayList<>();
         File file;
         URL url = getClass().getClassLoader().getResource(fileName);
