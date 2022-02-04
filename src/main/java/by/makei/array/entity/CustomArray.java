@@ -1,6 +1,7 @@
 package by.makei.array.entity;
 
 import by.makei.array.exception.CustomArrayException;
+import by.makei.array.observer.CustomArrayEvent;
 import by.makei.array.observer.CustomArrayObserver;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
@@ -53,6 +54,15 @@ public class CustomArray extends CustomArrayAbstract {
     }
 
     @Override
+    public void notifyObservers() {
+        if (!listObservers.isEmpty()) {
+            for (CustomArrayObserver observer : listObservers) {
+                observer.changeElement(new CustomArrayEvent(this));
+            }
+        }
+    }
+
+    @Override
     public boolean equals(Object o) {
         if (this == o) {
             return true;
@@ -75,15 +85,6 @@ public class CustomArray extends CustomArrayAbstract {
     @Override
     public String toString() {
         return Arrays.toString(intArray);
-    }
-
-    @Override
-    public void notifyObservers() {
-        if (!listObservers.isEmpty()) {
-            for (CustomArrayObserver observer : listObservers) {
-                observer.changeElement(this);
-            }
-        }
     }
 
 }

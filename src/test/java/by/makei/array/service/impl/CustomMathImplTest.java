@@ -20,7 +20,7 @@ class CustomMathImplTest {
     @DisplayName("OldSchool")
     class OldSchool {
 
-        @RepeatedTest(2)//just test for @RepeatedTest
+        @Test
         @Order(3)
         public void FindMaxPositiveTest() throws CustomArrayException {
             CustomArray customArray = new CustomArray(array);

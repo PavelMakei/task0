@@ -1,15 +1,20 @@
-2022-02-03 12:00:39 [main] INFO  makei.array.service.impl.CustomMathImpl - count positive = 3
-2022-02-03 12:00:39 [main] INFO  makei.array.service.impl.CustomMathImpl - count negative = 2
-2022-02-03 12:04:07 [main] INFO  makei.array.service.impl.CustomMathImpl - sum stream = 7
-2022-02-03 12:04:19 [main] INFO  makei.array.service.impl.CustomMathImpl - find max = 7
-2022-02-03 12:04:26 [main] INFO  makei.array.service.impl.CustomMathImpl - find max = 7
-2022-02-03 12:04:36 [main] INFO  makei.array.service.impl.CustomMathImpl - find max = 7
-2022-02-03 12:04:43 [main] INFO  makei.array.service.impl.CustomMathImpl - find average = 1.4
-2022-02-03 12:04:43 [main] INFO  makei.array.service.impl.CustomMathImpl - find min = -7
-2022-02-03 12:04:43 [main] ERROR makei.array.service.impl.CustomMathImpl - The sum of array is too big or too low
+2022-02-03 17:25:24 [main] INFO  makei.array.service.impl.CustomMathImpl - count positive = 3
+2022-02-03 17:25:24 [main] INFO  makei.array.service.impl.CustomMathImpl - count negative = 2
+2022-02-03 17:25:54 [main] INFO  makei.array.service.impl.CustomMathImpl - count negative stream = 2
+2022-02-03 17:25:54 [main] INFO  makei.array.service.impl.CustomMathImpl - count positive stream = 3
+2022-02-03 17:25:54 [main] INFO  makei.array.service.impl.CustomMathImpl - find max stream = 7
+2022-02-03 17:25:54 [main] INFO  makei.array.service.impl.CustomMathImpl - find average stream = 7.158281043333334E8
+2022-02-03 17:25:54 [main] INFO  makei.array.service.impl.CustomMathImpl - find min stream = -7
+2022-02-03 17:25:54 [main] INFO  makei.array.service.impl.CustomMathImpl - sum stream = 7
+2022-02-03 17:25:54 [main] INFO  makei.array.service.impl.CustomMathImpl - sum = 7
+2022-02-03 17:25:54 [main] INFO  makei.array.service.impl.CustomMathImpl - find max = 7
+2022-02-03 17:25:54 [main] INFO  makei.array.service.impl.CustomMathImpl - find max = 7
+2022-02-03 17:25:54 [main] INFO  makei.array.service.impl.CustomMathImpl - find average = 1.4
+2022-02-03 17:25:54 [main] INFO  makei.array.service.impl.CustomMathImpl - find min = -7
+2022-02-03 17:25:54 [main] ERROR makei.array.service.impl.CustomMathImpl - The sum of array is too big or too low
 java.lang.ArithmeticException: integer overflow
 	at java.lang.Math.addExact(Math.java:828) ~[?:?]
-	at by.makei.array.service.impl.CustomMathImpl.sumArray(CustomMathImpl.java:95) ~[classes/:?]
+	at by.makei.array.service.impl.CustomMathImpl.sumArray(CustomMathImpl.java:93) ~[classes/:?]
 	at by.makei.array.service.impl.CustomMathImplTest$OldSchool.lambda$sumArrayTrowExceptionTest$0(CustomMathImplTest.java:64) ~[test-classes/:?]
 	at org.junit.jupiter.api.AssertThrows.assertThrows(AssertThrows.java:55) ~[junit-jupiter-api-5.8.2.jar:5.8.2]
 	at org.junit.jupiter.api.AssertThrows.assertThrows(AssertThrows.java:37) ~[junit-jupiter-api-5.8.2.jar:5.8.2]
@@ -94,3 +99,5 @@ java.lang.ArithmeticException: integer overflow
 	at com.intellij.rt.junit.IdeaTestRunner$Repeater.startRunnerWithArgs(IdeaTestRunner.java:35) [junit-rt.jar:?]
 	at com.intellij.rt.junit.JUnitStarter.prepareStreamsAndStart(JUnitStarter.java:235) [junit-rt.jar:?]
 	at com.intellij.rt.junit.JUnitStarter.main(JUnitStarter.java:54) [junit-rt.jar:?]
+2022-02-03 17:25:54 [main] INFO  makei.array.service.impl.CustomMathImpl - count positive = 3
+2022-02-03 17:25:54 [main] INFO  makei.array.service.impl.CustomMathImpl - count negative = 2
