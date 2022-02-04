@@ -1,4 +1,4 @@
-package by.makei.array.service;
+package by.makei.array.util;
 
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;

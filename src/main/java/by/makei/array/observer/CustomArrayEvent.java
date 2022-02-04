@@ -1,6 +1,8 @@
 package by.makei.array.observer;
 
 import by.makei.array.entity.CustomArray;
+import by.makei.array.entity.CustomArrayAbstract;
+
 import java.util.EventObject;
 
 public class CustomArrayEvent extends EventObject {
@@ -12,10 +14,10 @@ public class CustomArrayEvent extends EventObject {
      * @param source the object on which the Event initially occurred
      * @throws IllegalArgumentException if source is null
      */
-    public CustomArrayEvent(CustomArray source) {
+    public CustomArrayEvent(CustomArrayAbstract source) {
         super(source);
     }
-    public CustomArrayEvent(CustomArray source, String message) {
+    public CustomArrayEvent(CustomArrayAbstract source, String message) {
         super(source);
     }
 

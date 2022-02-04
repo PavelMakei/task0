@@ -1,15 +1,16 @@
 package by.makei.array.entity;
 
+import by.makei.array.observer.CustomArrayEvent;
 import by.makei.array.observer.CustomArrayObserver;
 import by.makei.array.observer.Observable;
-import by.makei.array.service.GeneratorId;
+import by.makei.array.util.GeneratorId;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public abstract class CustomArrayAbstract implements Observable {
     protected final String id;
-    protected List<CustomArrayObserver> listObservers = new ArrayList<>();
+    private List<CustomArrayObserver> listObservers = new ArrayList<>();
 
     {
         id = GeneratorId.getInstance().getId();
@@ -29,8 +30,13 @@ public abstract class CustomArrayAbstract implements Observable {
 
     }
 
-    //этот метод отсюда можно и убрать
     @Override
-    public abstract void notifyObservers();
+    public void notifyObservers() {
+        if (!listObservers.isEmpty()) {
+            for (CustomArrayObserver observer : listObservers) {
+                observer.changeElement(new CustomArrayEvent(this));
+            }
+        }
+    }
 
 }

@@ -53,14 +53,7 @@ public class CustomArray extends CustomArrayAbstract {
         return Arrays.copyOf(intArray, intArray.length);
     }
 
-    @Override
-    public void notifyObservers() {
-        if (!listObservers.isEmpty()) {
-            for (CustomArrayObserver observer : listObservers) {
-                observer.changeElement(new CustomArrayEvent(this));
-            }
-        }
-    }
+
 
     @Override
     public boolean equals(Object o) {
