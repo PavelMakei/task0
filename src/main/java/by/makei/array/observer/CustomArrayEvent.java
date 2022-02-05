@@ -17,6 +17,13 @@ public class CustomArrayEvent extends EventObject {
     public CustomArrayEvent(CustomArrayAbstract source) {
         super(source);
     }
+    /**
+     * Constructs a prototypical Event.
+     *
+     * @param source the object on which the Event initially occurred
+     * @param message the String with custom message
+     * @throws IllegalArgumentException if source is null
+     */
     public CustomArrayEvent(CustomArrayAbstract source, String message) {
         super(source);
     }

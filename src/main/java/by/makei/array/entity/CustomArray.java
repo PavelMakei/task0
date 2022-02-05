@@ -54,7 +54,6 @@ public class CustomArray extends CustomArrayAbstract {
     }
 
 
-
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -72,12 +71,30 @@ public class CustomArray extends CustomArrayAbstract {
 
     @Override
     public int hashCode() {
-        return id.hashCode();
+        byte[] bytes = id.getBytes();
+        int hashcode = 0;
+        for (byte v : bytes) {
+            hashcode = 31 * hashcode + (v & 0xff);
+        }
+        return hashcode;
     }
 
     @Override
     public String toString() {
-        return Arrays.toString(intArray);
+        if (intArray == null)
+            return "null";
+        int iMax = intArray.length - 1;
+        if (iMax == -1)
+            return "[]";
+
+        StringBuilder b = new StringBuilder();
+        b.append('[');
+        for (int i = 0; ; i++) {
+            b.append(intArray[i]);
+            if (i == iMax)
+                return b.append(']').toString();
+            b.append(", ");
+        }
     }
 
 }

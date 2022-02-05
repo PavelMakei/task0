@@ -16,9 +16,6 @@ public abstract class CustomArrayAbstract implements Observable {
         id = GeneratorId.getInstance().getId();
     }
 
-    public void getInt() {
-    }
-
     @Override
     public void attach(CustomArrayObserver observer) {
         listObservers.add(observer);
@@ -27,7 +24,6 @@ public abstract class CustomArrayAbstract implements Observable {
     @Override
     public void detach(CustomArrayObserver observer) {
         listObservers.remove(observer);
-
     }
 
     @Override
